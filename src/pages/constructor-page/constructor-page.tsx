@@ -1,4 +1,5 @@
-import { useSelector } from '../../services/store';
+import { selectIsLoading } from '../../services/slices/appInitStateSlice';
+import { useAppSelector } from '../../services/store';
 
 import styles from './constructor-page.module.css';
 
