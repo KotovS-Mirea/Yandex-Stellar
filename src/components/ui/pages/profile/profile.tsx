@@ -50,19 +50,6 @@ export const ProfileUI: FC<ProfileUIProps> = ({
             icon={'EditIcon'}
           />
         </div>
-        <div className='pb-6'>
-          <Input
-            type={'password'}
-            placeholder={'Пароль'}
-            onChange={handleInputChange}
-            value={formValue.password}
-            name={'password'}
-            error={false}
-            errorText={''}
-            size={'default'}
-            icon={'EditIcon'}
-          />
-        </div>
         {isFormChanged && (
           <div className={styles.button}>
             <Button
