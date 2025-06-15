@@ -17,8 +17,8 @@ const getOrders = (orders: TOrder[], status: string): number[] =>
 
 export const FeedInfo: FC = () => {
   const orders: TOrder[] = useAppSelector(selectOrders);
-  const total = useAppSelector(selectTodaysOrdersCount);
-  const totalToday = useAppSelector(selectTotalOrdersCount);
+  const total = useAppSelector(selectTotalOrdersCount);
+  const totalToday = useAppSelector(selectTodaysOrdersCount);
 
   const readyOrders = getOrders(orders, 'done');
 
