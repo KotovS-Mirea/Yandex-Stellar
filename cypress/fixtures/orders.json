@@ -1,0 +1,75 @@
+{
+  "success": true,
+  "orders": [
+    {
+      "_id": "664fc0ee97ede0001d06c012",
+      "ingredients": [
+        "643d69a5c3f7b9001cfa093c", 
+        "643d69a5c3f7b9001cfa0941", 
+        "643d69a5c3f7b9001cfa093c"  
+      ],
+      "status": "done",
+      "name": "Краторный био-марсианский бургер",
+      "createdAt": "2025-06-15T12:30:45.983Z",
+      "updatedAt": "2025-06-15T12:35:27.392Z",
+      "number": 12345
+    },
+    {
+      "_id": "664fc0ba97ede0001d06c00f",
+      "ingredients": [
+        "643d69a5c3f7b9001cfa093d", 
+        "643d69a5c3f7b9001cfa093e", 
+        "643d69a5c3f7b9001cfa093d" 
+      ],
+      "status": "pending",
+      "name": "Флюоресцентный люминесцентный бургер",
+      "createdAt": "2025-06-15T11:45:22.249Z",
+      "updatedAt": "2025-06-15T11:50:34.685Z",
+      "number": 12344
+    },
+    {
+      "_id": "664fb59397ede0001d06bff1",
+      "ingredients": [
+        "643d69a5c3f7b9001cfa093c",
+        "643d69a5c3f7b9001cfa0940",
+        "643d69a5c3f7b9001cfa0943",
+        "643d69a5c3f7b9001cfa093c"
+      ],
+      "status": "created",
+      "name": "Краторный space метеоритный бургер",
+      "createdAt": "2025-06-15T18:20:15.489Z",
+      "updatedAt": "2025-06-15T18:25:59.865Z",
+      "number": 12343
+    },
+    {
+      "_id": "664fb57b97ede0001d06bfef",
+      "ingredients": [
+        "643d69a5c3f7b9001cfa093d",
+        "643d69a5c3f7b9001cfa0942",
+        "643d69a5c3f7b9001cfa0945",
+        "643d69a5c3f7b9001cfa093d"  
+      ],
+      "status": "done",
+      "name": "Флюоресцентный spicy антарианский бургер",
+      "createdAt": "2025-06-15T16:10:35.290Z",
+      "updatedAt": "2025-06-15T16:15:35.749Z",
+      "number": 12342
+    },
+    {
+      "_id": "664fb57597ede0001d06bfee",
+      "ingredients": [
+        "643d69a5c3f7b9001cfa093c",
+        "643d69a5c3f7b9001cfa093f",
+        "643d69a5c3f7b9001cfa0944",
+        "643d69a5c3f7b9001cfa093c"
+      ],
+      "status": "done",
+      "name": "Краторный традиционный-галактический бессмертный бургер",
+      "createdAt": "2025-06-15T14:05:29.446Z",
+      "updatedAt": "2025-06-15T14:10:29.901Z",
+      "number": 12341
+    }
+  ],
+  "total": 125,
+  "totalToday": 5
+}
