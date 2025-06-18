@@ -16,28 +16,49 @@ describe('Базовые проверки конструктора', () => {
     cy.location('href').should('include', 'localhost:4000');
   });
 
-  it('есть возможность добавлять булку и ингридиенты', () => {
-    const noBunSelector1 = `[data-cy=no_bun_text_1]`;
-    const noBunSelector2 = `[data-cy=no_bun_text_2]`;
-    const noIngredientsSelector = `[data-cy=no_ingredients_text]`;
-    const bunSelector = `[data-cy=bun_0]`;
-    const ingredientSelector = `[data-cy=ingredient_0]`;
+  it('есть возможность добавлять булку и ингридиенты с проверкой конкретных элементов', () => {
+    // пустота перед добавлением
+    cy.get('[data-cy=no_bun_text_1]').should('contain', 'Выберите булки');
+    cy.get('[data-cy=no_bun_text_2]').should('contain', 'Выберите булки');
+    cy.get('[data-cy=no_ingredients_text]').should('contain', 'Выберите начинку');
 
-    cy.get(noBunSelector1).as('noBunText1');
-    cy.get(noBunSelector2).as('noBunText2');
-    cy.get(noIngredientsSelector).as('noIngredientsText');
-    cy.get(bunSelector + ` button`).as('bun');
-    cy.get(ingredientSelector + ` button`).as('ingredient');
+    // данные булки
+    cy.get('[data-cy=bun_0]').then(($bun) => {
+      const bunName = $bun.find('p.text_type_main-default').text().trim();
+      const bunPrice = $bun.find('p.text_type_digits-default').text().trim();
 
-    // Проверяем пустоту перед добавлением
-    cy.get('@noBunText1').contains('Выберите булки');
-    cy.get('@noBunText2').contains('Выберите булки');
-    cy.get('@noIngredientsText').contains('Выберите начинку');
+      cy.get('[data-cy=bun_0] button').click();
+      cy.get('[data-cy=constructor_bun_top]')
+        .should('contain', bunName)
+        .and('contain', bunPrice);
+        
+      cy.get('[data-cy=constructor_bun_bottom]')
+        .should('contain', bunName)
+        .and('contain', bunPrice);
+    });
 
-    cy.get('@bun').click();
-    cy.get('@ingredient').click({ multiple: true });
-
-    cy.get(`[data-cy=constructor_section]`).contains('булка');
-    cy.get(`[data-cy=ingredient_element]`);
+    // ингредиенты и соусы
+    for (let i = 0; i < 8; i++) {
+      cy.get(`[data-cy=category_Начинки] [data-cy=ingredient_${i}]`).first().then(($ingredient) => {
+        const ingredientName = $ingredient.find('p.text_type_main-default').text().trim();
+        cy.wrap($ingredient).find('button:contains("Добавить")').click();
+        
+        // проверка добавленного ингредиента в конструкторе
+        cy.get(`[data-cy=constructor_ingredient_${i}]`) 
+          .find('.constructor-element__text')  
+          .should('contain', ingredientName);
+      });
+    }
+    for (let i = 0; i < 4; i++) {
+      cy.get(`[data-cy=category_Соусы] [data-cy=ingredient_${i}]`).first().then(($ingredient) => {
+        const ingredientName = $ingredient.find('p.text_type_main-default').text().trim();
+        cy.wrap($ingredient).find('button:contains("Добавить")').click();
+        
+        // проверка добавленного ингредиента в конструкторе (8 добавлены до)
+        cy.get(`[data-cy=constructor_ingredient_${8+i}]`) 
+          .find('.constructor-element__text')  
+          .should('contain', ingredientName);
+      });
+    }
   });
 });

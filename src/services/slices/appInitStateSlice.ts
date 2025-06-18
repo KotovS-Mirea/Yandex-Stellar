@@ -62,14 +62,21 @@ const appInitSlice = createSlice({
   name: 'stellarBurger',
   initialState,
   reducers: {
-    addIngredient(state, action: PayloadAction<TIngredient>) {
-      if (action.payload.type === 'bun') {
-        state.constructorItems.bun = action.payload;
-      } else {
-        state.constructorItems.ingredients.push({
-          ...action.payload,
-          uniqueId: uuidv4()
-        });
+    // uuid moved to prepare
+    addIngredient: {
+      reducer(state, action: PayloadAction<TIngredientUnique>) {
+        if (action.payload.type === 'bun') {
+          state.constructorItems.bun = action.payload;
+        } else {
+          state.constructorItems.ingredients.push(action.payload);
+        }
+      },
+      prepare(ingredient: TIngredient) {
+        const payload =
+          ingredient.type === 'bun'
+            ? { ...ingredient, uniqueId: '' }
+            : { ...ingredient, uniqueId: uuidv4() };
+        return { payload };
       }
     },
     resetOrderRequest(state) {

@@ -45,7 +45,7 @@ describe('Test actions', () => {
     expect(constructor.ingredients.length).toEqual(3);
     expect(constructor.bun.name === 'Краторная булка N-200i');
   });
-  
+
   test('Test removeIngredient', () => {
     const store = initStore();
     const before = selectConstructorItems(store.getState()).ingredients.length;
